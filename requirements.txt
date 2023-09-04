@@ -1,0 +1,9 @@
+Django
+ipython
+Pillow
+psycopg2
+tzdata
+djangorestframework
+pytz
+python-dotenv
+django-filter
