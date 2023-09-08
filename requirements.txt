@@ -8,3 +8,4 @@ pytz
 python-dotenv
 django-filter
 coverage
+djangorestframework-simplejwt
