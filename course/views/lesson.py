@@ -3,6 +3,7 @@ from rest_framework import viewsets, generics
 from rest_framework.filters import OrderingFilter
 
 from course.models import Lesson
+from course.paginators import ListPaginator
 from course.seriallizers.lesson import LessonSerializer
 
 
@@ -18,11 +19,13 @@ class LessonDeleteAPIView(generics.DestroyAPIView):
 
 class LessonViewSet(viewsets.ModelViewSet):
     serializer_class = LessonSerializer
+    pagination_class = ListPaginator
     queryset = Lesson.objects.all()
 
 
 class LessonListAPIView(generics.ListAPIView):
     serializer_class = LessonSerializer
+    pagination_class = ListPaginator
     queryset = Lesson.objects.all()
 
     filter_backends = [DjangoFilterBackend, OrderingFilter]

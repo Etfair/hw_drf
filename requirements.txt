@@ -7,3 +7,4 @@ djangorestframework
 pytz
 python-dotenv
 django-filter
+coverage

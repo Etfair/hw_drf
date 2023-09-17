@@ -3,6 +3,7 @@ from rest_framework.fields import SerializerMethodField
 
 from course.models import Course, Lesson
 from course.seriallizers.lesson import LessonDetailSerializer, LessonSerializer
+from users.serializers import SubscriptionSerializer
 
 
 class CourseSerializer(serializers.ModelSerializer):

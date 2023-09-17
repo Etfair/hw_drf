@@ -1,5 +1,7 @@
+from datetime import date
+
 from rest_framework import serializers
-from users.models import User
+from users.models import User, Subscription
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -11,3 +13,21 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_user_payment_count(self, instance):
         return instance.payment_set.all().count()
+
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subscription
+        fields = '__all__'
+
+
+class MyTokenObtainPairSerializer(serializers.ModelSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token['email'] = user.email
+
+        user.last_login = date.today()
+        user.save()
+
+        return token

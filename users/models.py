@@ -1,7 +1,8 @@
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from course.models import NULLABLE
+NULLABLE = {'null': True, 'blank': True}
 
 
 class User(AbstractUser):
@@ -16,3 +17,18 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+
+class Subscription(models.Model):
+
+    course_name = models.CharField(max_length=300, verbose_name='название подписки', **NULLABLE)
+    course = models.ForeignKey('course.Course', verbose_name='курс для подписки', on_delete=models.CASCADE, related_name='subscriptions')
+    user = models.ForeignKey(User, verbose_name='пользователь', on_delete=models.CASCADE, related_name='subscriptions')
+    is_subscribed = models.BooleanField(default=False, verbose_name='Подписка оформлена')
+
+    def __str__(self):
+        return f'{self.course} {self.user}'
+
+    class Meta:
+        verbose_name = 'Подписка на курс'
+        verbose_name_plural = 'Подписки на курс'

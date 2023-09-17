@@ -3,6 +3,7 @@ from rest_framework import generics
 from rest_framework.filters import OrderingFilter
 
 from course.models import Payment
+from course.paginators import ListPaginator
 from course.seriallizers.payment import PaymentSerializer
 
 
@@ -12,7 +13,6 @@ class PaymentListAPIView(generics.ListAPIView):
 
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['method']
-
 
 
 class PaymentCreateAPIView(generics.CreateAPIView):
