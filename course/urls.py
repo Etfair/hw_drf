@@ -12,11 +12,12 @@ urlpatterns = [
     path('lesson/<int:pk>/update/', LessonUpdateAPIView.as_view(), name='lesson_update'),
     path('lesson/<int:pk>/', LessonRetrieveAPIView.as_view(), name='lesson_detail'),
 
-    path('payment/create/', PaymentCreateAPIView.as_view(), name='create_payment'),
-    path('payment/', PaymentListAPIView.as_view(), name='list_payment'),
+    path('payment/create/', PaymentCreateAPIView.as_view(), name='payment_create'),
+    path('payments/<int:pk>/', PaymentRetrieveAPIView.as_view(), name='payment_detail'),
 ]
 
 router = routers.SimpleRouter()
 router.register(r'course', CourseViewSet, basename='course')
+router.register(r'payment', PaymentsViewSet, basename='payment')
 
 urlpatterns += router.urls

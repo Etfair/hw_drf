@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ('email', 'user_payment_count')
 
     def get_user_payment_count(self, instance):
         return instance.payment_set.all().count()

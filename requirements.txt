@@ -9,3 +9,7 @@ python-dotenv
 django-filter
 coverage
 djangorestframework-simplejwt
+drf_yasg
+django-cors-headers
+requests
+stripe

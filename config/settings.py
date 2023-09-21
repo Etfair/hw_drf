@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     'django_filters',
+    'drf_yasg',
+    'corsheaders',
+
     'users',
     'course',
 ]
@@ -74,7 +77,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    # 'http://localhost:8000',
+    # адресс вашего фронтенд-сервера
+    "http://read-only.example.com",
+    "http://read-and-write.example.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://read-and-write.example.com",
+]
+
+CORS_ALLOW_ALL_ORIGINS = False
 
 ROOT_URLCONF = 'config.urls'
 
@@ -167,3 +184,8 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
+
+CUR_API_URL = ''
+CUR_API_KEY = ''
+
+STRIPE_SECRET_KEY_TEST = os.getenv('STRIPE_SECRET_KEY')

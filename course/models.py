@@ -55,6 +55,8 @@ class Payment(models.Model):
     amount = models.IntegerField(verbose_name='сумма оплаты')
     method = models.CharField(max_length=14, choices=PAYMENT_METHOD_CHOICES, **NULLABLE, verbose_name='способ оплаты')
     date = models.DateField(auto_now_add=True, verbose_name='дата оплаты')
+    is_paid = models.BooleanField(default=False, verbose_name='статус оплаты')
+    session = models.CharField(max_length=150, verbose_name='сессия для оплаты', **NULLABLE)
 
     def __str__(self):
         return f'{self.amount}({self.method}) - {self.date}'
