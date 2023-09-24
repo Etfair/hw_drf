@@ -13,6 +13,7 @@ class Course(models.Model):
     description = models.TextField(verbose_name='описание')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE,
                               verbose_name='владелец')
+    last_update_date = models.DateTimeField(auto_now=True, verbose_name='дата последнего обновления')
 
     def __str__(self):
         return self.title

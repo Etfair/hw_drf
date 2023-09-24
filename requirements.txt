@@ -13,3 +13,7 @@ drf_yasg
 django-cors-headers
 requests
 stripe
+celery
+eventlet
+redis
+django_celery_beat
