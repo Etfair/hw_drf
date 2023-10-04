@@ -124,6 +124,7 @@ DATABASES = {
         'NAME': os.getenv('DATABASES_DEFAULT_NAME'),
         'USER': os.getenv('DATABASES_DEFAULT_USER'),
         'PASSWORD': os.getenv('DATABASES_DEFAULT_PASSWORD'),
+        'HOST': 'db'
     }
 }
 
@@ -202,7 +203,7 @@ if CACHE_ENABLED:
     }
 
 # URL-адрес брокера сообщений
-CELERY_BROKER_URL = 'redis://localhost:6379' # Например, Redis, который по умолчанию работает на порту 6379
+CELERY_BROKER_URL = 'redis://redis:6379/0' # Например, Redis, который по умолчанию работает на порту 6379
 
 # URL-адрес брокера результатов, также Redis
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
